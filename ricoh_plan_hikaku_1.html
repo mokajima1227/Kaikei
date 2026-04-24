@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>リコーリース 口座振替プラン比較</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;font-size:14px;color:#1a202c;background:#edf2f7;padding:24px 16px}
+.wrap{max-width:960px;margin:0 auto}
+.page-title{font-size:17px;font-weight:500;margin-bottom:4px;color:#1a202c}
+.lead{font-size:12px;color:#4a5568;margin-bottom:20px}
+.sec-label{font-size:11px;font-weight:500;color:#4a5568;margin:16px 0 6px;text-transform:uppercase;letter-spacing:.05em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:620px){.grid2{grid-template-columns:1fr}}
+
+/* カード */
+.card{background:#fff;border:1.5px solid #cbd5e0;border-radius:10px;overflow:hidden}
+.card.rec{border:2px solid #2b6cb0}
+
+/* カードヘッダー */
+.card-head{padding:10px 14px 9px;border-bottom:1.5px solid #cbd5e0;background:#f7fafc}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:5px;margin-bottom:5px}
+.bg-teal{background:#c6f6d5;color:#22543d}
+.bg-blue{background:#bee3f8;color:#2a4365}
+.card-title{font-size:14px;font-weight:500;color:#1a202c}
+.card-sub{font-size:11px;color:#718096;margin-top:2px}
+
+/* フロー */
+.flow-wrap{padding:10px 14px 8px;border-bottom:1.5px solid #e2e8f0;background:#fafafa}
+.flow-label{font-size:10px;font-weight:500;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.flow{display:flex;align-items:flex-start;gap:0}
+.step{flex:1;text-align:center;position:relative;padding:0 3px}
+.step:not(:last-child)::after{content:"→";position:absolute;right:-7px;top:12px;font-size:11px;color:#a0aec0;font-weight:500}
+.step-num{width:26px;height:26px;border-radius:50%;font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;border:1.5px solid}
+.step-num.teal{background:#e6fffa;color:#234e52;border-color:#81e6d9}
+.step-num.blue{background:#ebf8ff;color:#2a4365;border-color:#90cdf4}
+.step-num.amber{background:#fffaf0;color:#7b341e;border-color:#fbd38d}
+.step-t{font-size:10px;font-weight:500;color:#2d3748;line-height:1.3}
+.step-d{font-size:9.5px;color:#718096;margin-top:2px;line-height:1.3}
+
+/* 行テーブル */
+.rows{padding:0 0 4px}
+.sec-row{font-size:10px;font-weight:500;color:#4a5568;padding:7px 14px 4px;background:#f7fafc;border-bottom:1.5px solid #cbd5e0;border-top:1.5px solid #cbd5e0;text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.sec-row:first-child{border-top:none;margin-top:0}
+.row{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 14px;border-bottom:1px solid #e2e8f0;gap:8px;font-size:12px}
+.row:last-child{border-bottom:none}
+.rl{color:#4a5568;font-size:11px;flex-shrink:0;width:108px;line-height:1.5;padding-top:1px}
+.rv{color:#1a202c;text-align:right;line-height:1.5;flex:1}
+.rv .sub{font-size:10px;color:#718096;display:block}
+.rv .warn{font-size:10px;color:#744210;display:block}
+
+/* バッジ類 */
+.g{display:inline-block;font-size:10px;font-weight:500;padding:1px 7px;border-radius:4px;background:#c6f6d5;color:#22543d;border:1px solid #9ae6b4}
+.w{display:inline-block;font-size:10px;font-weight:500;padding:1px 7px;border-radius:4px;background:#fefcbf;color:#744210;border:1px solid #f6e05e}
+.r{display:inline-block;font-size:10px;font-weight:500;padding:1px 7px;border-radius:4px;background:#fed7d7;color:#822727;border:1px solid #fc8181}
+
+/* 差額ボックス */
+.diff-box{background:#ebf8ff;border:1.5px solid #90cdf4;border-radius:8px;padding:11px 14px;margin-bottom:14px;font-size:12px;color:#2a4365;line-height:1.7}
+.diff-box strong{font-weight:500}
+
+/* まとめカード */
+.sum-card{background:#fff;border:1.5px solid #cbd5e0;border-radius:10px;overflow:hidden}
+.sum-head{background:#f7fafc;padding:7px 14px;border-bottom:1.5px solid #cbd5e0;font-size:11px;font-weight:500;color:#4a5568;text-transform:uppercase;letter-spacing:.04em}
+.sum-row{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 14px;border-bottom:1px solid #e2e8f0;gap:8px;font-size:12px}
+.sum-row:last-child{border-bottom:none}
+.sum-rl{color:#4a5568;font-size:11px;flex-shrink:0;width:90px;line-height:1.5}
+.sum-rv{color:#1a202c;line-height:1.6;flex:1}
+
+/* 注記 */
+.note{font-size:11px;color:#4a5568;padding:9px 13px;border:1px solid #cbd5e0;border-left:3px solid #a0aec0;border-radius:0 6px 6px 0;background:#f7fafc;line-height:1.8;margin-top:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="page-title">リコーリース 口座振替プラン比較</p>
+<p class="lead">標準プラン（紙の依頼書）vs Webオプション追加（ネット口座振替受付）　月謝55,000円・60家庭・税抜</p>
+
+<div class="grid2">
+
+<!-- 標準プラン -->
+<div class="card">
+  <div class="card-head">
+    <div class="badge bg-teal">標準プラン</div>
+    <div class="card-title">紙の口座振替依頼書</div>
+    <div class="card-sub">口座振替サービス（コレクト！）のみ</div>
+  </div>
+  <div class="flow-wrap">
+    <div class="flow-label">導入の流れ</div>
+    <div class="flow">
+      <div class="step"><div class="step-num teal">1</div><div class="step-t">申込み</div><div class="step-d">RL審査</div></div>
+      <div class="step"><div class="step-num teal">2</div><div class="step-t">ご契約</div><div class="step-d">依頼書納品</div></div>
+      <div class="step"><div class="step-num teal">3</div><div class="step-t">依頼書配布</div><div class="step-d">保護者に郵送</div></div>
+      <div class="step"><div class="step-num teal">4</div><div class="step-t">回収・登録</div><div class="step-d">コレクト！入力</div></div>
+      <div class="step"><div class="step-num teal">5</div><div class="step-t">振替開始</div><div class="step-d"></div></div>
+    </div>
+  </div>
+  <div class="rows">
+    <div class="sec-row">スケジュール</div>
+    <div class="row"><span class="rl">申込〜契約</span><span class="rv"><span class="g">約1〜2週間</span><span class="sub">RL審査のみ</span></span></div>
+    <div class="row"><span class="rl">依頼書配布〜回収</span><span class="rv">2〜4週間程度<span class="sub">保護者の記入・返送が必要</span></span></div>
+    <div class="row"><span class="rl">振替開始まで合計</span><span class="rv"><span class="g">最短1〜1.5ヶ月</span><span class="sub">依頼書回収次第で前後する</span></span></div>
+    <div class="row"><span class="rl">振替日の選択肢</span><span class="rv"><span class="g">4日・20日・27日（3択）</span></span></div>
+    <div class="sec-row">費用</div>
+    <div class="row"><span class="rl">月額基本料</span><span class="rv">3,000円/月<span class="sub">6ヶ月間は0円（キャンペーン）</span></span></div>
+    <div class="row"><span class="rl">請求手数料</span><span class="rv">90円×60件 = 5,400円/月</span></div>
+    <div class="row"><span class="rl">振込手数料</span><span class="rv">500円/月</span></div>
+    <div class="row"><span class="rl">依頼書</span><span class="rv">300円/冊（20部入り）<span class="sub">初回3〜4冊程度：900〜1,200円</span></span></div>
+    <div class="row"><span class="rl">月額合計（通常時）</span><span class="rv" style="font-size:15px;font-weight:500">8,900円/月</span></div>
+    <div class="row"><span class="rl">年間コスト</span><span class="rv">97,680円<span class="sub">6ヶ月キャンペーン込み</span></span></div>
+    <div class="sec-row">事務負担</div>
+    <div class="row"><span class="rl">依頼書の管理</span><span class="rv"><span class="w">配布・回収・郵送が必要</span><span class="sub">不備があれば訂正処理料500円/件</span></span></div>
+    <div class="row"><span class="rl">登録の即時性</span><span class="rv"><span class="w">紙提出〜登録まで数週間</span></span></div>
+    <div class="row"><span class="rl">変更・追加</span><span class="rv">新しい依頼書の配布・回収が必要</span></div>
+    <div class="row"><span class="rl">管理システム</span><span class="rv">コレクト！<span class="sub">Windows/Chrome・Edge限定</span></span></div>
+  </div>
+</div>
+
+<!-- Webオプション追加 -->
+<div class="card rec">
+  <div class="card-head">
+    <div class="badge bg-blue">Webオプション追加</div>
+    <div class="card-title">標準 ＋ ネット口座振替受付</div>
+    <div class="card-sub">口座振替 ＋ スマホで口座登録プラン（27日振替固定）</div>
+  </div>
+  <div class="flow-wrap">
+    <div class="flow-label">導入の流れ（2契約が必要）</div>
+    <div class="flow">
+      <div class="step"><div class="step-num blue">1</div><div class="step-t">口振申込</div><div class="step-d">同時申込推奨</div></div>
+      <div class="step"><div class="step-num amber">2</div><div class="step-t">ネット口振申込</div><div class="step-d">別途審査</div></div>
+      <div class="step"><div class="step-num amber">3</div><div class="step-t">金融機関審査</div><div class="step-d">約2ヶ月</div></div>
+      <div class="step"><div class="step-num blue">4</div><div class="step-t">URL発行</div><div class="step-d">K-Frontから</div></div>
+      <div class="step"><div class="step-num blue">5</div><div class="step-t">保護者登録</div><div class="step-d">スマホで完結</div></div>
+    </div>
+  </div>
+  <div class="rows">
+    <div class="sec-row">スケジュール</div>
+    <div class="row"><span class="rl">口振契約</span><span class="rv"><span class="g">約1〜2週間</span><span class="sub">先行して利用開始可</span></span></div>
+    <div class="row"><span class="rl">ネット口振審査</span><span class="rv"><span class="w">約2ヶ月</span><span class="sub">金融機関審査が必要</span></span></div>
+    <div class="row"><span class="rl">Web登録開始まで合計</span><span class="rv"><span class="w">申込から約2〜2.5ヶ月</span><span class="sub">口振は先行して開始できる</span></span></div>
+    <div class="row"><span class="rl">振替日の選択肢</span><span class="rv"><span class="w">27日のみ固定</span><span class="sub">4・20日が選べなくなる</span></span></div>
+    <div class="sec-row">費用</div>
+    <div class="row"><span class="rl">月額基本料（口振）</span><span class="rv">3,000円/月<span class="sub">6ヶ月間は0円（キャンペーン）</span></span></div>
+    <div class="row"><span class="rl">請求手数料</span><span class="rv">90円×60件 = 5,400円/月</span></div>
+    <div class="row"><span class="rl">振込手数料</span><span class="rv">500円/月</span></div>
+    <div class="row"><span class="rl">ネット口振月額</span><span class="rv">1,500円/月<span class="warn">毎月継続してかかる</span></span></div>
+    <div class="row"><span class="rl">初回登録手数料</span><span class="rv">500円×60件 = 30,000円<span class="warn">初月のみ（口座変更時も発生）</span></span></div>
+    <div class="row"><span class="rl">月額合計（通常時）</span><span class="rv" style="font-size:15px;font-weight:500">10,400円/月<span class="sub">初月は40,400円</span></span></div>
+    <div class="row"><span class="rl">年間コスト（概算）</span><span class="rv">154,800円〜<span class="sub">初回登録費30,000円＋月10,400円×12</span></span></div>
+    <div class="sec-row">事務負担</div>
+    <div class="row"><span class="rl">依頼書の管理</span><span class="rv"><span class="g">不要（Web完結）</span><span class="sub">信託銀行等は紙対応が必要</span></span></div>
+    <div class="row"><span class="rl">登録の即時性</span><span class="rv"><span class="g">URLを送るだけ・即時受付</span></span></div>
+    <div class="row"><span class="rl">変更・追加</span><span class="rv"><span class="g">保護者がスマホから随時対応</span><span class="sub">変更1件ごとに500円の登録手数料</span></span></div>
+    <div class="row"><span class="rl">管理システム</span><span class="rv">K-Front ＋ コレクト！<span class="sub">両方Windows/Chrome・Edge限定</span></span></div>
+  </div>
+</div>
+
+</div>
+
+<!-- 差額 -->
+<div class="diff-box">
+  <strong>年間コスト比較（初年度・概算・税抜）</strong><br>
+  標準プラン：<strong>97,680円</strong>　vs　Webオプション追加：<strong>154,800円〜</strong><br>
+  → 年間差額：約<strong>57,120円</strong>　／　2年目以降の差額：約<strong>18,000円/年</strong>
+</div>
+
+<!-- まとめ -->
+<div class="grid2">
+  <div>
+    <p class="sec-label">標準プランを選ぶ場合</p>
+    <div class="sum-card">
+      <div class="sum-head">判断ポイント</div>
+      <div class="sum-row"><span class="sum-rl">向いている状況</span><span class="sum-rv">コストを最小化したい。依頼書の管理業務を許容できる。</span></div>
+      <div class="sum-row"><span class="sum-rl">注意点</span><span class="sum-rv">依頼書の配布・回収・記載不備への対応が毎年度発生する。新入生や口座変更のたびに紙のやり取りが必要。</span></div>
+    </div>
+  </div>
+  <div>
+    <p class="sec-label">Webオプションを追加する場合</p>
+    <div class="sum-card">
+      <div class="sum-head">判断ポイント</div>
+      <div class="sum-row"><span class="sum-rl">向いている状況</span><span class="sum-rv">紙のやり取りをなくしたい。保護者の利便性を高めたい。</span></div>
+      <div class="sum-row"><span class="sum-rl">注意点</span><span class="sum-rv">振替日が27日固定。審査に2ヶ月かかる。信託銀行（三菱UFJ・みずほ等）口座は紙対応が残る。年間約18,000〜57,000円の追加コスト。</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="note">
+  ※ 口座振替キャンペーン（基本料6ヶ月無償）はネット口座振替受付の月額1,500円には適用されない。<br>
+  ※ 口座変更・再登録のたびに500円/件の登録手数料が発生する。<br>
+  ※ K-Front・コレクト！はどちらもWindows・Chrome/Edge専用。Mac・Safariでは利用不可。<br>
+  ※ 審査期間・振替開始日は審査状況によって前後する場合がある。
+</div>
+</div>
+</body>
+</html>
