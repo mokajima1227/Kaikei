@@ -1,0 +1,211 @@
+
+<h2 class="sr-only">リコーリース 口座振替プラン比較：紙の依頼書プランとWeb口座登録オプション追加プランのスケジュール・費用比較</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.sec{font-size:12px;font-weight:500;color:var(--color-text-secondary);margin:1.2rem 0 0.5rem;text-transform:uppercase;letter-spacing:.05em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.card.rec{border:2px solid var(--color-border-info)}
+.card-head{padding:10px 14px 8px;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:var(--border-radius-md);margin-bottom:4px}
+.bg-teal{background:#E1F5EE;color:#085041}
+.bg-blue{background:#E6F1FB;color:#0C447C}
+.bg-amber{background:#FAEEDA;color:#633806}
+.card-title{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.card-sub{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.rows{padding:10px 14px}
+.row{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);gap:8px;font-size:12px}
+.row:last-child{border-bottom:none}
+.rl{color:var(--color-text-secondary);font-size:11px;flex-shrink:0;width:112px;line-height:1.5;padding-top:1px}
+.rv{color:var(--color-text-primary);text-align:right;line-height:1.5;flex:1}
+.rv .sub{font-size:10px;color:var(--color-text-secondary);display:block}
+.rv .warn{font-size:10px;color:#633806;display:block}
+.g{display:inline-block;font-size:10px;font-weight:500;padding:1px 6px;border-radius:3px;background:#E1F5EE;color:#085041}
+.w{display:inline-block;font-size:10px;font-weight:500;padding:1px 6px;border-radius:3px;background:#FAEEDA;color:#633806}
+.r{display:inline-block;font-size:10px;font-weight:500;padding:1px 6px;border-radius:3px;background:#FCEBEB;color:#A32D2D}
+.sl{font-size:10px;font-weight:500;color:var(--color-text-secondary);padding:6px 0 3px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:2px;text-transform:uppercase;letter-spacing:.04em}
+.flow-wrap{padding:10px 14px 6px}
+.flow{display:flex;align-items:flex-start;gap:0;margin:6px 0}
+.step{flex:1;text-align:center;position:relative;padding:0 4px}
+.step:not(:last-child)::after{content:"→";position:absolute;right:-6px;top:13px;font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.step-num{width:26px;height:26px;border-radius:50%;font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;margin:0 auto 4px}
+.step-num.teal{background:#E1F5EE;color:#085041}
+.step-num.blue{background:#E6F1FB;color:#0C447C}
+.step-num.amber{background:#FAEEDA;color:#633806}
+.step-t{font-size:10px;font-weight:500;color:var(--color-text-primary);line-height:1.3}
+.step-d{font-size:9.5px;color:var(--color-text-secondary);margin-top:2px;line-height:1.3}
+.timeline{margin:8px 14px 4px;border-left:2px solid var(--color-border-secondary);padding-left:12px}
+.tl-item{position:relative;margin-bottom:8px}
+.tl-item::before{content:"";position:absolute;left:-16px;top:5px;width:8px;height:8px;border-radius:50%;background:var(--color-border-secondary)}
+.tl-item.teal::before{background:#0F6E56}
+.tl-item.blue::before{background:#185FA5}
+.tl-item.amber::before{background:#854F0B}
+.tl-label{font-size:11px;font-weight:500;color:var(--color-text-primary)}
+.tl-sub{font-size:10px;color:var(--color-text-secondary);line-height:1.4;margin-top:1px}
+.cost-total{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px;margin:0 0 12px}
+.cost-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.cost-row:last-child{border-bottom:none;font-weight:500;font-size:13px;padding-top:6px}
+.cost-label{color:var(--color-text-secondary)}
+.cost-val{color:var(--color-text-primary)}
+.cost-val.highlight{color:#0C447C;font-weight:500}
+.note{font-size:11px;color:var(--color-text-secondary);padding:8px 12px;border-left:2px solid var(--color-border-secondary);line-height:1.7;margin-top:4px;border-radius:0}
+.diff-box{background:var(--color-background-info);border-radius:var(--border-radius-md);padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--color-text-info);line-height:1.6}
+.diff-box strong{font-weight:500}
+</style>
+
+<div class="grid2">
+
+<!-- プランA: 紙の口座振替依頼書 -->
+<div class="card">
+  <div class="card-head">
+    <div class="badge bg-teal">標準プラン</div>
+    <div class="card-title">紙の口座振替依頼書</div>
+    <div class="card-sub">口座振替サービス（コレクト！）のみ</div>
+  </div>
+  <div class="flow-wrap">
+    <div class="sl">導入の流れ</div>
+    <div class="flow">
+      <div class="step">
+        <div class="step-num teal">1</div>
+        <div class="step-t">申込み</div>
+        <div class="step-d">リコーリース審査</div>
+      </div>
+      <div class="step">
+        <div class="step-num teal">2</div>
+        <div class="step-t">ご契約</div>
+        <div class="step-d">依頼書・マニュアル納品</div>
+      </div>
+      <div class="step">
+        <div class="step-num teal">3</div>
+        <div class="step-t">依頼書配布</div>
+        <div class="step-d">保護者に郵送・配布</div>
+      </div>
+      <div class="step">
+        <div class="step-num teal">4</div>
+        <div class="step-t">回収・登録</div>
+        <div class="step-d">コレクト！へ入力</div>
+      </div>
+      <div class="step">
+        <div class="step-num teal">5</div>
+        <div class="step-t">振替開始</div>
+        <div class="step-d"></div>
+      </div>
+    </div>
+  </div>
+  <div class="rows">
+    <div class="sl">スケジュール</div>
+    <div class="row"><span class="rl">申込〜契約</span><span class="rv"><span class="g">約1〜2週間</span><span class="sub">RL審査のみ</span></span></div>
+    <div class="row"><span class="rl">依頼書配布〜回収</span><span class="rv">2〜4週間程度<span class="sub">保護者の記入・返送が必要</span></span></div>
+    <div class="row"><span class="rl">振替開始まで合計</span><span class="rv"><span class="g">最短1〜1.5ヶ月</span><span class="sub">依頼書回収次第で前後する</span></span></div>
+    <div class="row"><span class="rl">振替日の選択肢</span><span class="rv"><span class="g">4日・20日・27日（3択）</span></span></div>
+    <div class="sl" style="margin-top:6px">費用（月謝55,000円・60家庭・税抜）</div>
+    <div class="row"><span class="rl">月額基本料</span><span class="rv">3,000円/月<span class="sub">6ヶ月間は0円（キャンペーン）</span></span></div>
+    <div class="row"><span class="rl">請求手数料</span><span class="rv">90円×60件 = 5,400円/月</span></div>
+    <div class="row"><span class="rl">振込手数料</span><span class="rv">500円/月</span></div>
+    <div class="row"><span class="rl">依頼書</span><span class="rv">300円/冊（20部入り）<span class="sub">初回3〜4冊程度：900〜1,200円</span></span></div>
+    <div class="row"><span class="rl">月額合計（通常時）</span><span class="rv" style="font-size:14px;font-weight:500">8,900円/月</span></div>
+    <div class="row"><span class="rl">年間コスト</span><span class="rv">97,680円<span class="sub">基本料無償6ヶ月キャンペーン込み</span></span></div>
+    <div class="sl" style="margin-top:6px">事務負担</div>
+    <div class="row"><span class="rl">依頼書の管理</span><span class="rv"><span class="w">配布・回収・郵送が必要</span><span class="sub">不備があれば訂正処理料500円/件</span></span></div>
+    <div class="row"><span class="rl">登録の即時性</span><span class="rv"><span class="w">紙依頼書提出〜登録まで数週間</span></span></div>
+    <div class="row"><span class="rl">変更・追加</span><span class="rv">新しい依頼書の配布・回収が必要</span></div>
+    <div class="row"><span class="rl">管理システム</span><span class="rv">コレクト！<span class="sub">Windows/Chrome・Edge限定</span></span></div>
+  </div>
+</div>
+
+<!-- プランB: Webオプション追加 -->
+<div class="card rec">
+  <div class="card-head">
+    <div class="badge bg-blue">Web口座登録オプション追加</div>
+    <div class="card-title">標準 ＋ ネット口座振替受付</div>
+    <div class="card-sub">口座振替 ＋ スマホで口座登録プラン（27日振替固定）</div>
+  </div>
+  <div class="flow-wrap">
+    <div class="sl">導入の流れ（2契約が必要）</div>
+    <div class="flow">
+      <div class="step">
+        <div class="step-num blue">1</div>
+        <div class="step-t">口振申込</div>
+        <div class="step-d">同時申込推奨</div>
+      </div>
+      <div class="step">
+        <div class="step-num amber">2</div>
+        <div class="step-t">ネット口振申込</div>
+        <div class="step-d">別途金融機関審査</div>
+      </div>
+      <div class="step">
+        <div class="step-num amber">3</div>
+        <div class="step-t">金融機関審査</div>
+        <div class="step-d">約2ヶ月</div>
+      </div>
+      <div class="step">
+        <div class="step-num blue">4</div>
+        <div class="step-t">URL発行</div>
+        <div class="step-d">K-Frontから発行</div>
+      </div>
+      <div class="step">
+        <div class="step-num blue">5</div>
+        <div class="step-t">保護者登録</div>
+        <div class="step-d">スマホで完結</div>
+      </div>
+    </div>
+  </div>
+  <div class="rows">
+    <div class="sl">スケジュール</div>
+    <div class="row"><span class="rl">口振契約</span><span class="rv"><span class="g">約1〜2週間</span><span class="sub">RL審査のみ（先行利用可）</span></span></div>
+    <div class="row"><span class="rl">ネット口振審査</span><span class="rv"><span class="w">約2ヶ月</span><span class="sub">金融機関審査が必要</span></span></div>
+    <div class="row"><span class="rl">Web登録開始まで合計</span><span class="rv"><span class="w">申込から約2〜2.5ヶ月</span><span class="sub">口振は先行して開始できる</span></span></div>
+    <div class="row"><span class="rl">振替日の選択肢</span><span class="rv"><span class="w">27日のみ固定</span><span class="sub">口振（4・20・27日）の選択肢が制限される</span></span></div>
+    <div class="sl" style="margin-top:6px">費用（月謝55,000円・60家庭・税抜）</div>
+    <div class="row"><span class="rl">月額基本料（口振）</span><span class="rv">3,000円/月<span class="sub">6ヶ月間は0円（キャンペーン）</span></span></div>
+    <div class="row"><span class="rl">請求手数料</span><span class="rv">90円×60件 = 5,400円/月</span></div>
+    <div class="row"><span class="rl">振込手数料</span><span class="rv">500円/月</span></div>
+    <div class="row"><span class="rl">ネット口振月額</span><span class="rv">1,500円/月<span class="warn">毎月継続してかかる</span></span></div>
+    <div class="row"><span class="rl">初回登録手数料</span><span class="rv">500円×60件 = 30,000円<span class="warn">初月のみ（口座変更時も発生）</span></span></div>
+    <div class="row"><span class="rl">月額合計（通常時）</span><span class="rv" style="font-size:14px;font-weight:500">10,400円/月<span class="sub" style="font-size:11px">初月は40,400円</span></span></div>
+    <div class="row"><span class="rl">年間コスト（概算）</span><span class="rv">154,800円〜<span class="sub">初回登録費30,000円＋月10,400円×12</span></span></div>
+    <div class="sl" style="margin-top:6px">事務負担</div>
+    <div class="row"><span class="rl">依頼書の管理</span><span class="rv"><span class="g">不要（Web完結）</span><span class="sub">ただし信託銀行等は紙対応が必要</span></span></div>
+    <div class="row"><span class="rl">登録の即時性</span><span class="rv"><span class="g">URLを送るだけ・即時受付</span></span></div>
+    <div class="row"><span class="rl">変更・追加</span><span class="rv"><span class="g">保護者がスマホから随時対応</span><span class="sub">変更1件ごとに500円の登録手数料</span></span></div>
+    <div class="row"><span class="rl">管理システム</span><span class="rv">K-Front（口座登録管理）<br>＋ コレクト！（集金管理）<span class="sub">両方Windows/Chrome・Edge限定</span></span></div>
+  </div>
+</div>
+
+</div>
+
+<!-- 年間コスト差の比較 -->
+<div class="diff-box">
+  <strong>年間コスト比較（初年度・概算・税抜）</strong><br>
+  標準プラン：<strong>97,680円</strong>　vs　Webオプション追加：<strong>154,800円〜</strong><br>
+  → 年間差額：約<strong>57,120円</strong>　Webオプション追加の方が高い<br>
+  ただし2年目以降（初回登録費なし）は：標準 <strong>106,800円</strong>　vs　Web追加 <strong>124,800円</strong>　→ 差額約<strong>18,000円/年</strong>
+</div>
+
+<div class="grid2">
+  <div>
+    <div class="sec">標準プランを選ぶ場合</div>
+    <div class="card">
+      <div class="rows">
+        <div class="row"><span class="rl">向いている状況</span><span class="rv">コストを最小化したい。保護者の金融機関が多様でも対応できる。依頼書の管理業務を許容できる。</span></div>
+        <div class="row"><span class="rl">注意点</span><span class="rv">依頼書の配布・回収・記載不備への対応が毎年度発生する。新入生や口座変更のたびに紙のやり取りが必要。</span></div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="sec">Webオプションを追加する場合</div>
+    <div class="card">
+      <div class="rows">
+        <div class="row"><span class="rl">向いている状況</span><span class="rv">紙のやり取りをなくしたい。保護者の利便性を高めたい。事務作業を減らして他業務に集中したい。</span></div>
+        <div class="row"><span class="rl">注意点</span><span class="rv">振替日が27日固定になる。審査に2ヶ月かかる。信託銀行（三菱UFJ・みずほ等）口座は紙対応が必要。年間約18,000〜57,000円の追加コスト。</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="note">
+  ※ 口座振替キャンペーン（基本料6ヶ月無償）は口座振替サービス分のみ適用。ネット口座振替受付の月額1,500円はキャンペーン対象外。<br>
+  ※ 初回口座登録後も、口座変更・引越し等による再登録のたびに500円/件の登録手数料が発生する。<br>
+  ※ 2つのシステム（K-Front・コレクト！）はどちらもWindows・Chrome/Edge専用。Mac・Safariでは利用不可。<br>
+  ※ 審査期間・振替開始日は審査状況によって前後する場合がある。
+</div>
