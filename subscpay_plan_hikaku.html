@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サブスクペイ 口座振替プラン比較</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;font-size:14px;color:#1a202c;background:#edf2f7;padding:24px 16px}
+.wrap{max-width:960px;margin:0 auto}
+.page-title{font-size:17px;font-weight:500;margin-bottom:4px;color:#1a202c}
+.lead{font-size:12px;color:#4a5568;margin-bottom:20px}
+.sec-label{font-size:11px;font-weight:500;color:#4a5568;margin:16px 0 6px;text-transform:uppercase;letter-spacing:.05em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:620px){.grid2{grid-template-columns:1fr}}
+.card{background:#fff;border:1.5px solid #cbd5e0;border-radius:10px;overflow:hidden}
+.card.rec{border:2px solid #2b6cb0}
+.card-head{padding:10px 14px 9px;border-bottom:1.5px solid #cbd5e0;background:#f7fafc}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:5px;margin-bottom:5px}
+.bg-blue{background:#bee3f8;color:#2a4365}
+.bg-purple{background:#e9d8fd;color:#44337a}
+.bg-amber{background:#fefcbf;color:#744210}
+.card-title{font-size:14px;font-weight:500;color:#1a202c}
+.card-sub{font-size:11px;color:#718096;margin-top:2px}
+.flow-wrap{padding:10px 14px 8px;border-bottom:1.5px solid #e2e8f0;background:#fafafa}
+.flow-label{font-size:10px;font-weight:500;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.flow{display:flex;align-items:flex-start;gap:0}
+.step{flex:1;text-align:center;position:relative;padding:0 3px}
+.step:not(:last-child)::after{content:"→";position:absolute;right:-7px;top:12px;font-size:11px;color:#a0aec0;font-weight:500}
+.step-num{width:26px;height:26px;border-radius:50%;font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;border:1.5px solid}
+.step-num.blue{background:#ebf8ff;color:#2a4365;border-color:#90cdf4}
+.step-num.purple{background:#faf5ff;color:#44337a;border-color:#d6bcfa}
+.step-num.amber{background:#fffaf0;color:#7b341e;border-color:#fbd38d}
+.step-t{font-size:10px;font-weight:500;color:#2d3748;line-height:1.3}
+.step-d{font-size:9.5px;color:#718096;margin-top:2px;line-height:1.3}
+.rows{padding:0 0 4px}
+.sec-row{font-size:10px;font-weight:500;color:#4a5568;padding:7px 14px 4px;background:#f7fafc;border-bottom:1.5px solid #cbd5e0;border-top:1.5px solid #cbd5e0;text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.sec-row:first-child{border-top:none;margin-top:0}
+.row{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 14px;border-bottom:1px solid #e2e8f0;gap:8px;font-size:12px}
+.row:last-child{border-bottom:none}
+.rl{color:#4a5568;font-size:11px;flex-shrink:0;width:108px;line-height:1.5;padding-top:1px}
+.rv{color:#1a202c;text-align:right;line-height:1.5;flex:1}
+.rv .sub{font-size:10px;color:#718096;display:block}
+.rv .warn{font-size:10px;color:#744210;display:block}
+.g{display:inline-block;font-size:10px;font-weight:500;padding:1px 7px;border-radius:4px;background:#c6f6d5;color:#22543d;border:1px solid #9ae6b4}
+.w{display:inline-block;font-size:10px;font-weight:500;padding:1px 7px;border-radius:4px;background:#fefcbf;color:#744210;border:1px solid #f6e05e}
+.r{display:inline-block;font-size:10px;font-weight:500;padding:1px 7px;border-radius:4px;background:#fed7d7;color:#822727;border:1px solid #fc8181}
+.diff-box{background:#ebf8ff;border:1.5px solid #90cdf4;border-radius:8px;padding:11px 14px;margin-bottom:14px;font-size:12px;color:#2a4365;line-height:1.7}
+.diff-box strong{font-weight:500}
+.alert-box{background:#fffaf0;border:1.5px solid #f6ad55;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:#744210;line-height:1.7}
+.alert-box strong{font-weight:500}
+.sum-card{background:#fff;border:1.5px solid #cbd5e0;border-radius:10px;overflow:hidden}
+.sum-head{background:#f7fafc;padding:7px 14px;border-bottom:1.5px solid #cbd5e0;font-size:11px;font-weight:500;color:#4a5568;text-transform:uppercase;letter-spacing:.04em}
+.sum-row{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 14px;border-bottom:1px solid #e2e8f0;gap:8px;font-size:12px}
+.sum-row:last-child{border-bottom:none}
+.sum-rl{color:#4a5568;font-size:11px;flex-shrink:0;width:90px;line-height:1.5}
+.sum-rv{color:#1a202c;line-height:1.6;flex:1}
+.note{font-size:11px;color:#4a5568;padding:9px 13px;border:1px solid #cbd5e0;border-left:3px solid #a0aec0;border-radius:0 6px 6px 0;background:#f7fafc;line-height:1.8;margin-top:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="page-title">サブスクペイ 口座振替プラン比較</p>
+<p class="lead">標準プラン（紙の依頼書）vs Webオプション追加（WEB口座振替）　月謝55,000円・60家庭・税抜　最低契約2年間</p>
+
+<div class="alert-box">
+  <strong>重要：サブスクペイは最低契約期間2年間。</strong>2年未満で解約した場合、残月分の月額料金（5,500円×残月数）が発生します。どちらのプランを選んでも同条件です。
+</div>
+
+<div class="grid2">
+
+<!-- 標準プラン：口座振替（紙） -->
+<div class="card">
+  <div class="card-head">
+    <div class="badge bg-blue">標準プラン</div>
+    <div class="card-title">口座振替（紙の依頼書）</div>
+    <div class="card-sub">口座振替サービス（りそな経由）のみ</div>
+  </div>
+  <div class="flow-wrap">
+    <div class="flow-label">導入の流れ</div>
+    <div class="flow">
+      <div class="step"><div class="step-num blue">1</div><div class="step-t">申込み・審査</div><div class="step-d">書類提出</div></div>
+      <div class="step"><div class="step-num blue">2</div><div class="step-t">ご契約</div><div class="step-d">依頼書納品</div></div>
+      <div class="step"><div class="step-num blue">3</div><div class="step-t">依頼書配布</div><div class="step-d">保護者に郵送</div></div>
+      <div class="step"><div class="step-num blue">4</div><div class="step-t">回収・登録</div><div class="step-d">管理画面入力</div></div>
+      <div class="step"><div class="step-num blue">5</div><div class="step-t">振替開始</div><div class="step-d"></div></div>
+    </div>
+  </div>
+  <div class="rows">
+    <div class="sec-row">スケジュール</div>
+    <div class="row"><span class="rl">申込〜契約</span><span class="rv"><span class="w">約1.5〜2ヶ月</span><span class="sub">金融機関審査（りそな経由）が必要</span></span></div>
+    <div class="row"><span class="rl">依頼書配布〜回収</span><span class="rv">2〜4週間程度<span class="sub">保護者の記入・返送が必要</span></span></div>
+    <div class="row"><span class="rl">振替開始まで合計</span><span class="rv"><span class="w">申込から約2〜2.5ヶ月</span></span></div>
+    <div class="row"><span class="rl">振替日の選択肢</span><span class="rv"><span class="g">13日または28日（2択）</span><span class="sub">契約後の変更不可</span></span></div>
+    <div class="sec-row">費用</div>
+    <div class="row"><span class="rl">月額固定費</span><span class="rv">5,500円/月<span class="sub">キャンペーンなし・2年縛り</span></span></div>
+    <div class="row"><span class="rl">処理料</span><span class="rv"><span class="g">85円/件</span>　×60件 = 5,100円/月<span class="sub">業界最安水準</span></span></div>
+    <div class="row"><span class="rl">振込手数料</span><span class="rv">0〜550円/月<span class="sub">学園口座の銀行による</span></span></div>
+    <div class="row"><span class="rl">訂正処理料</span><span class="rv">500円/件<span class="sub">依頼書記載不備による返送時</span></span></div>
+    <div class="row"><span class="rl">月額合計（通常時）</span><span class="rv" style="font-size:15px;font-weight:500">10,600円〜/月</span></div>
+    <div class="row"><span class="rl">年間コスト</span><span class="rv">127,200円〜<span class="sub">月10,600円×12ヶ月</span></span></div>
+    <div class="sec-row">事務負担</div>
+    <div class="row"><span class="rl">依頼書の管理</span><span class="rv"><span class="w">配布・回収・郵送が必要</span><span class="sub">不備があれば訂正処理料500円/件</span></span></div>
+    <div class="row"><span class="rl">登録の即時性</span><span class="rv"><span class="w">紙提出〜登録まで数週間</span></span></div>
+    <div class="row"><span class="rl">変更・追加</span><span class="rv">新しい依頼書の配布・回収が必要</span></div>
+    <div class="row"><span class="rl">管理システム</span><span class="rv">管理画面（Web）<span class="sub">顧客DB・分析・API連携対応</span></span></div>
+  </div>
+</div>
+
+<!-- Webオプション追加 -->
+<div class="card rec">
+  <div class="card-head">
+    <div class="badge bg-purple">WEB口座振替オプション追加</div>
+    <div class="card-title">口座振替 ＋ WEB口座振替受付</div>
+    <div class="card-sub">保護者がWebで口座登録を完結できるオプション</div>
+  </div>
+  <div class="flow-wrap">
+    <div class="flow-label">導入の流れ</div>
+    <div class="flow">
+      <div class="step"><div class="step-num blue">1</div><div class="step-t">申込み・審査</div><div class="step-d">書類提出</div></div>
+      <div class="step"><div class="step-num blue">2</div><div class="step-t">ご契約</div><div class="step-d">オプション追加</div></div>
+      <div class="step"><div class="step-num purple">3</div><div class="step-t">Web登録URL発行</div><div class="step-d">管理画面から</div></div>
+      <div class="step"><div class="step-num purple">4</div><div class="step-t">保護者に案内</div><div class="step-d">URLを送付</div></div>
+      <div class="step"><div class="step-num purple">5</div><div class="step-t">保護者登録</div><div class="step-d">Webで完結</div></div>
+    </div>
+  </div>
+  <div class="rows">
+    <div class="sec-row">スケジュール</div>
+    <div class="row"><span class="rl">申込〜契約</span><span class="rv"><span class="w">約1.5〜2ヶ月</span><span class="sub">標準プランと同じ（金融機関審査）</span></span></div>
+    <div class="row"><span class="rl">Web登録の受付開始</span><span class="rv"><span class="g">契約後すぐに開始可能</span><span class="sub">URLを発行して保護者に案内するだけ</span></span></div>
+    <div class="row"><span class="rl">振替開始まで合計</span><span class="rv"><span class="w">申込から約2〜2.5ヶ月</span><span class="sub">審査期間は標準プランと同じ</span></span></div>
+    <div class="row"><span class="rl">振替日の選択肢</span><span class="rv">13日または28日（2択）<span class="sub">契約後の変更不可（標準と同じ）</span></span></div>
+    <div class="sec-row">費用</div>
+    <div class="row"><span class="rl">月額固定費</span><span class="rv">5,500円/月</span></div>
+    <div class="row"><span class="rl">処理料</span><span class="rv"><span class="g">85円/件</span>　×60件 = 5,100円/月</span></div>
+    <div class="row"><span class="rl">振込手数料</span><span class="rv">0〜550円/月</span></div>
+    <div class="row"><span class="rl">WEB口座振替月額</span><span class="rv">10,000円/月<span class="warn">毎月継続してかかる</span></span></div>
+    <div class="row"><span class="rl">登録処理料</span><span class="rv">350円/件（成否問わず）<span class="warn">初回60件 = 21,000円（失敗しても課金）</span></span></div>
+    <div class="row"><span class="rl">月額合計（通常時）</span><span class="rv" style="font-size:15px;font-weight:500">20,600円〜/月<span class="sub">初月は41,600円〜</span></span></div>
+    <div class="row"><span class="rl">年間コスト（概算）</span><span class="rv">268,200円〜<span class="sub">初回登録費21,000円＋月20,600円×12</span></span></div>
+    <div class="sec-row">事務負担</div>
+    <div class="row"><span class="rl">依頼書の管理</span><span class="rv"><span class="g">不要（Web完結）</span><span class="sub">ただし一部金融機関は紙対応が必要</span></span></div>
+    <div class="row"><span class="rl">登録の即時性</span><span class="rv"><span class="g">URLを送るだけ・即時受付</span></span></div>
+    <div class="row"><span class="rl">変更・追加</span><span class="rv"><span class="g">保護者がWebから随時対応</span><span class="warn">変更1件ごとに350円の登録処理料（成否問わず）</span></span></div>
+    <div class="row"><span class="rl">管理システム</span><span class="rv">管理画面（Web）<span class="sub">顧客DB・分析・API連携対応</span></span></div>
+  </div>
+</div>
+
+</div>
+
+<!-- 差額 -->
+<div class="diff-box">
+  <strong>年間コスト比較（初年度・概算・税抜）</strong><br>
+  標準プラン：<strong>127,200円〜</strong>　vs　WEBオプション追加：<strong>268,200円〜</strong><br>
+  → 年間差額：約<strong>141,000円</strong>　WEBオプション追加の方が高い<br>
+  2年目以降（初回登録費なし）：標準 <strong>127,200円〜</strong>　vs　WEB追加 <strong>247,200円〜</strong>　→ 差額約<strong>120,000円/年</strong>
+</div>
+
+<!-- まとめ -->
+<div class="grid2">
+  <div>
+    <p class="sec-label">標準プランを選ぶ場合</p>
+    <div class="sum-card">
+      <div class="sum-head">判断ポイント</div>
+      <div class="sum-row"><span class="sum-rl">向いている状況</span><span class="sum-rv">コストを最小化したい。依頼書の管理業務を許容できる。振替単価85円の安さを活かしたい。</span></div>
+      <div class="sum-row"><span class="sum-rl">注意点</span><span class="sum-rv">依頼書の配布・回収が毎年発生。2年縛りがあるため合計254,400円〜の固定費が確定する。</span></div>
+    </div>
+  </div>
+  <div>
+    <p class="sec-label">WEBオプションを追加する場合</p>
+    <div class="sum-card">
+      <div class="sum-head">判断ポイント</div>
+      <div class="sum-row"><span class="sum-rl">向いている状況</span><span class="sum-rv">紙のやり取りをなくしたい。ただし月額20,600円〜は高額のため費用対効果の検討が必要。</span></div>
+      <div class="sum-row"><span class="sum-rl">注意点</span><span class="sum-rv">登録処理料350円は失敗時も課金される。月額コストがリコーリース標準プランの約2.3倍になる。</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="note">
+  ※ サブスクペイはすべて税抜表記。消費税10%加算後の月額合計は標準プランで約11,660円〜、WEBオプション追加で約22,660円〜。<br>
+  ※ 最低契約期間2年間。2年未満の解約は残月分の月額料金（5,500円×残月数）が発生する。<br>
+  ※ WEB口座振替の登録処理料（350円/件）は登録の成否に関わらず、金融機関の画面接続時に都度発生する。<br>
+  ※ 振替日は13日または28日の2択で、契約後の変更は不可。<br>
+  ※ 口座振替の審査には登記簿謄本（2ヶ月以内取得）等の書類提出が必要。
+</div>
+</div>
+</body>
+</html>
