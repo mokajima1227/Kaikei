@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年度 専科教員コマ数・コマ給 学年別一覧</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic UI','Segoe UI',sans-serif;font-size:13px;color:#1a1a1a;background:#f5f4f0;padding:24px 20px}
+h1{font-size:15px;font-weight:500;margin-bottom:3px}
+.subtitle{font-size:11px;color:#999;margin-bottom:20px}
+
+.dept-block{margin-bottom:28px}
+.dept-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:8px 12px;border-radius:8px}
+.dept-header.syoto{background:#eaf3de}
+.dept-header.chuto{background:#e6f1fb}
+.dept-header.koto{background:#eeedfe}
+.dept-header.shochuto{background:#fff3e0}
+.dept-name{font-size:13px;font-weight:500}
+.dept-name.syoto{color:#3B6D11}
+.dept-name.chuto{color:#185FA5}
+.dept-name.koto{color:#3C3489}
+.dept-name.shochuto{color:#854F0B}
+.dept-grade{font-size:11px;color:#999;margin-left:2px}
+.dept-summary{margin-left:auto;text-align:right}
+.dept-total-koma{font-size:14px;font-weight:500}
+.dept-total-koma.syoto{color:#3B6D11}
+.dept-total-koma.chuto{color:#185FA5}
+.dept-total-koma.koto{color:#3C3489}
+.dept-total-koma.shochuto{color:#854F0B}
+.dept-total-fee{font-size:11px;color:#888;margin-top:1px}
+
+.grade-grid{display:grid;gap:10px}
+.grade-grid.g3{grid-template-columns:repeat(3,1fr)}
+.grade-grid.g2{grid-template-columns:repeat(2,1fr)}
+.grade-grid.g3h{grid-template-columns:repeat(3,1fr)}
+
+.grade-card{background:#fff;border-radius:8px;border:0.5px solid #e0ddd4;overflow:hidden}
+.grade-card-header{display:flex;align-items:baseline;justify-content:space-between;padding:7px 10px 6px;border-bottom:0.5px solid #ece9e0}
+.grade-label{font-size:12px;font-weight:500}
+.grade-label.syoto{color:#3B6D11}
+.grade-label.chuto{color:#185FA5}
+.grade-label.koto{color:#3C3489}
+.grade-koma{font-size:13px;font-weight:500;color:#1a1a1a}
+.grade-fee{font-size:11px;color:#888}
+
+table.inner{width:100%;border-collapse:collapse}
+table.inner td{padding:4px 10px;border-bottom:0.5px solid #f0ede4;font-size:12px;vertical-align:middle}
+table.inner tr:last-child td{border-bottom:none}
+td.t-teacher{font-weight:500;width:5.5em;white-space:nowrap}
+td.t-subj{color:#666}
+td.t-koma{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;width:3.5em}
+td.t-fee{text-align:right;font-variant-numeric:tabular-nums;color:#888;font-size:11px;width:6em}
+tr.undecided td{color:#bbb;font-style:italic}
+
+.badge{display:inline-block;padding:1px 5px;border-radius:10px;font-size:10px;white-space:nowrap;margin:1px}
+.badge-english{background:#E6F1FB;color:#185FA5}
+.badge-korean{background:#EEEDFE;color:#3C3489}
+.badge-craft{background:#EAF3DE;color:#3B6D11}
+.badge-music{background:#FAECE7;color:#993C1D}
+.badge-art{background:#FBEAF0;color:#72243E}
+.badge-sport{background:#FAEEDA;color:#854F0B}
+.badge-other{background:#F1EFE8;color:#5F5E5A}
+
+.summary-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:24px}
+.sum-cell{background:#fff;border-radius:8px;border:0.5px solid #e0ddd4;padding:10px 12px}
+.sum-cell .lbl{font-size:10px;color:#999;margin-bottom:3px}
+.sum-cell .val{font-size:15px;font-weight:500}
+.sum-cell .fee{font-size:11px;color:#999;margin-top:1px}
+.sum-cell.syoto .val{color:#3B6D11}
+.sum-cell.chuto .val{color:#185FA5}
+.sum-cell.koto .val{color:#3C3489}
+.sum-cell.shochuto .val{color:#854F0B}
+.sum-cell.total .val{color:#1a1a1a}
+
+.note{font-size:11px;color:#aaa;line-height:1.7;margin-top:16px;padding-top:10px;border-top:0.5px solid #e0ddd4}
+</style>
+</head>
+<body>
+
+<h1>2026年度 専科教員コマ数・コマ給 学年別一覧</h1>
+<p class="subtitle">1コマ 2,500円（一律）／ 2026年度予算シート（2026/03/28版）より集計　※10・11年は合同クラスとして合算</p>
+
+<div class="summary-bar">
+  <div class="sum-cell syoto"><div class="lbl">初等部（1〜6年）</div><div class="val">1,620コマ</div><div class="fee">4,050,000円</div></div>
+  <div class="sum-cell chuto"><div class="lbl">中等部（7・8年）</div><div class="val">904コマ</div><div class="fee">2,260,000円</div></div>
+  <div class="sum-cell shochuto"><div class="lbl">初等部＋中等部</div><div class="val">2,524コマ</div><div class="fee">6,310,000円</div></div>
+  <div class="sum-cell koto"><div class="lbl">高等部（9〜12年）</div><div class="val">1,281コマ</div><div class="fee">3,202,500円</div></div>
+  <div class="sum-cell total"><div class="lbl">全体</div><div class="val">3,805コマ</div><div class="fee">9,512,500円</div></div>
+</div>
+
+<!-- 初等部 -->
+<div class="dept-block">
+  <div class="dept-header syoto">
+    <span class="dept-name syoto">初等部</span><span class="dept-grade">1〜6年</span>
+    <div class="dept-summary">
+      <div class="dept-total-koma syoto">1,620コマ</div>
+      <div class="dept-total-fee">4,050,000円</div>
+    </div>
+  </div>
+  <div class="grade-grid g3">
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label syoto">1年</span><span class="grade-koma">185コマ</span><span class="grade-fee">462,500円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">杉浦</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">55</td><td class="t-fee">137,500円</td></tr>
+        <tr><td class="t-teacher">二村</td><td class="t-subj"><span class="badge badge-craft">手仕事</span></td><td class="t-koma">51</td><td class="t-fee">127,500円</td></tr>
+        <tr><td class="t-teacher">村上</td><td class="t-subj"><span class="badge badge-music">音楽</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+        <tr><td class="t-teacher">八百</td><td class="t-subj"><span class="badge badge-music">伴奏</span></td><td class="t-koma">27</td><td class="t-fee">67,500円</td></tr>
+        <tr><td class="t-teacher">龍</td><td class="t-subj"><span class="badge badge-korean">韓国語</span></td><td class="t-koma">24</td><td class="t-fee">60,000円</td></tr>
+      </table>
+    </div>
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label syoto">2年</span><span class="grade-koma">202コマ</span><span class="grade-fee">505,000円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">杉浦</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">60</td><td class="t-fee">150,000円</td></tr>
+        <tr><td class="t-teacher">龍</td><td class="t-subj"><span class="badge badge-korean">韓国語</span></td><td class="t-koma">58</td><td class="t-fee">145,000円</td></tr>
+        <tr><td class="t-teacher">秋田</td><td class="t-subj"><span class="badge badge-craft">手仕事</span></td><td class="t-koma">54</td><td class="t-fee">135,000円</td></tr>
+        <tr><td class="t-teacher">八百</td><td class="t-subj"><span class="badge badge-music">伴奏</span></td><td class="t-koma">30</td><td class="t-fee">75,000円</td></tr>
+      </table>
+    </div>
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label syoto">3年</span><span class="grade-koma">174コマ</span><span class="grade-fee">435,000円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">中村</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">61</td><td class="t-fee">152,500円</td></tr>
+        <tr><td class="t-teacher">龍</td><td class="t-subj"><span class="badge badge-korean">韓国語</span></td><td class="t-koma">58</td><td class="t-fee">145,000円</td></tr>
+        <tr><td class="t-teacher">小林瑠</td><td class="t-subj"><span class="badge badge-art">書道</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+        <tr><td class="t-teacher">八百</td><td class="t-subj"><span class="badge badge-music">伴奏</span></td><td class="t-koma">27</td><td class="t-fee">67,500円</td></tr>
+      </table>
+    </div>
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label syoto">4年</span><span class="grade-koma">200コマ</span><span class="grade-fee">500,000円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">秋田</td><td class="t-subj"><span class="badge badge-craft">手仕事</span></td><td class="t-koma">60</td><td class="t-fee">150,000円</td></tr>
+        <tr><td class="t-teacher">後藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">30</td><td class="t-fee">75,000円</td></tr>
+        <tr><td class="t-teacher">竹内</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+        <tr><td class="t-teacher">小林瑠</td><td class="t-subj"><span class="badge badge-art">書道</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+        <tr><td class="t-teacher">中村</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">27</td><td class="t-fee">67,500円</td></tr>
+        <tr><td class="t-teacher">松尾</td><td class="t-subj"><span class="badge badge-music">オイリュトミー</span></td><td class="t-koma">27</td><td class="t-fee">67,500円</td></tr>
+      </table>
+    </div>
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label syoto">5年</span><span class="grade-koma">343コマ</span><span class="grade-fee">857,500円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">龍</td><td class="t-subj"><span class="badge badge-korean">韓国語</span></td><td class="t-koma">58</td><td class="t-fee">145,000円</td></tr>
+        <tr><td class="t-teacher">中村</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">57</td><td class="t-fee">142,500円</td></tr>
+        <tr><td class="t-teacher">秋田</td><td class="t-subj"><span class="badge badge-craft">手仕事</span></td><td class="t-koma">57</td><td class="t-fee">142,500円</td></tr>
+        <tr><td class="t-teacher">松尾</td><td class="t-subj"><span class="badge badge-music">オイリュトミー</span></td><td class="t-koma">57</td><td class="t-fee">142,500円</td></tr>
+        <tr><td class="t-teacher">村上</td><td class="t-subj"><span class="badge badge-art">彫塑</span></td><td class="t-koma">55</td><td class="t-fee">137,500円</td></tr>
+        <tr><td class="t-teacher">小林瑠</td><td class="t-subj"><span class="badge badge-art">書道</span></td><td class="t-koma">31</td><td class="t-fee">77,500円</td></tr>
+        <tr><td class="t-teacher">竹内</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+      </table>
+    </div>
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label syoto">6年</span><span class="grade-koma">516コマ</span><span class="grade-fee">1,290,000円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">中村</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">87</td><td class="t-fee">217,500円</td></tr>
+        <tr><td class="t-teacher">龍</td><td class="t-subj"><span class="badge badge-korean">韓国語</span></td><td class="t-koma">83</td><td class="t-fee">207,500円</td></tr>
+        <tr><td class="t-teacher">二村</td><td class="t-subj"><span class="badge badge-craft">手仕事</span></td><td class="t-koma">59</td><td class="t-fee">147,500円</td></tr>
+        <tr><td class="t-teacher">加藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">59</td><td class="t-fee">147,500円</td></tr>
+        <tr><td class="t-teacher">小林瑠</td><td class="t-subj"><span class="badge badge-art">書道</span></td><td class="t-koma">58</td><td class="t-fee">145,000円</td></tr>
+        <tr><td class="t-teacher">村上</td><td class="t-subj"><span class="badge badge-art">彫塑</span></td><td class="t-koma">58</td><td class="t-fee">145,000円</td></tr>
+        <tr><td class="t-teacher">河瀬</td><td class="t-subj"><span class="badge badge-music">音楽</span><span class="badge badge-music">アンサンブル</span></td><td class="t-koma">57</td><td class="t-fee">142,500円</td></tr>
+        <tr><td class="t-teacher">八百</td><td class="t-subj"><span class="badge badge-music">伴奏</span></td><td class="t-koma">55</td><td class="t-fee">137,500円</td></tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- 中等部 -->
+<div class="dept-block">
+  <div class="dept-header chuto">
+    <span class="dept-name chuto">中等部</span><span class="dept-grade">7・8年</span>
+    <div class="dept-summary">
+      <div class="dept-total-koma chuto">904コマ</div>
+      <div class="dept-total-fee">2,260,000円</div>
+    </div>
+  </div>
+  <div class="grade-grid g2">
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label chuto">7年</span><span class="grade-koma">559コマ</span><span class="grade-fee">1,397,500円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">中村</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">88</td><td class="t-fee">220,000円</td></tr>
+        <tr><td class="t-teacher">金</td><td class="t-subj"><span class="badge badge-korean">韓国語</span></td><td class="t-koma">87</td><td class="t-fee">217,500円</td></tr>
+        <tr><td class="t-teacher">村上</td><td class="t-subj"><span class="badge badge-art">彫塑</span></td><td class="t-koma">62</td><td class="t-fee">155,000円</td></tr>
+        <tr><td class="t-teacher">二村</td><td class="t-subj"><span class="badge badge-craft">手仕事</span></td><td class="t-koma">62</td><td class="t-fee">155,000円</td></tr>
+        <tr><td class="t-teacher">河瀬</td><td class="t-subj"><span class="badge badge-music">音楽</span><span class="badge badge-music">アンサンブル</span></td><td class="t-koma">59</td><td class="t-fee">147,500円</td></tr>
+        <tr><td class="t-teacher">小林瑠</td><td class="t-subj"><span class="badge badge-art">書道</span></td><td class="t-koma">58</td><td class="t-fee">145,000円</td></tr>
+        <tr><td class="t-teacher">松尾</td><td class="t-subj"><span class="badge badge-music">オイリュトミー</span></td><td class="t-koma">58</td><td class="t-fee">145,000円</td></tr>
+        <tr><td class="t-teacher">加藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">29</td><td class="t-fee">72,500円</td></tr>
+        <tr><td class="t-teacher">八百</td><td class="t-subj"><span class="badge badge-music">伴奏</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+        <tr><td class="t-teacher">野菜塾</td><td class="t-subj"><span class="badge badge-other">園芸</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+      </table>
+    </div>
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label chuto">8年</span><span class="grade-koma">345コマ</span><span class="grade-fee">862,500円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">金</td><td class="t-subj"><span class="badge badge-korean">韓国語</span></td><td class="t-koma">85</td><td class="t-fee">212,500円</td></tr>
+        <tr><td class="t-teacher">小林瑠</td><td class="t-subj"><span class="badge badge-art">書道</span></td><td class="t-koma">61</td><td class="t-fee">152,500円</td></tr>
+        <tr><td class="t-teacher">津田</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">60</td><td class="t-fee">150,000円</td></tr>
+        <tr><td class="t-teacher">二村</td><td class="t-subj"><span class="badge badge-craft">手仕事</span></td><td class="t-koma">56</td><td class="t-fee">140,000円</td></tr>
+        <tr><td class="t-teacher">八百</td><td class="t-subj"><span class="badge badge-music">伴奏</span></td><td class="t-koma">31</td><td class="t-fee">77,500円</td></tr>
+        <tr><td class="t-teacher">中村</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+        <tr><td class="t-teacher">加藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">12</td><td class="t-fee">30,000円</td></tr>
+        <tr><td class="t-teacher">後藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">12</td><td class="t-fee">30,000円</td></tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- 初等部＋中等部 合計バー -->
+<div class="dept-header shochuto" style="margin-bottom:24px;border-radius:8px">
+  <span class="dept-name shochuto">初等部＋中等部 合計</span><span class="dept-grade">1〜8年</span>
+  <div class="dept-summary">
+    <div class="dept-total-koma shochuto">2,524コマ</div>
+    <div class="dept-total-fee">6,310,000円</div>
+  </div>
+</div>
+
+<!-- 高等部 -->
+<div class="dept-block">
+  <div class="dept-header koto">
+    <span class="dept-name koto">高等部</span><span class="dept-grade">9〜12年</span>
+    <div class="dept-summary">
+      <div class="dept-total-koma koto">1,281コマ</div>
+      <div class="dept-total-fee">3,202,500円</div>
+    </div>
+  </div>
+  <div class="grade-grid g3h">
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label koto">9年</span><span class="grade-koma">568コマ</span><span class="grade-fee">1,420,000円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">箕浦</td><td class="t-subj"><span class="badge badge-craft">手仕事</span></td><td class="t-koma">90</td><td class="t-fee">225,000円</td></tr>
+        <tr><td class="t-teacher">佐藤</td><td class="t-subj"><span class="badge badge-other">国語</span></td><td class="t-koma">60</td><td class="t-fee">150,000円</td></tr>
+        <tr><td class="t-teacher">若杉</td><td class="t-subj"><span class="badge badge-other">数学</span></td><td class="t-koma">60</td><td class="t-fee">150,000円</td></tr>
+        <tr><td class="t-teacher">中村武</td><td class="t-subj"><span class="badge badge-other">木工</span></td><td class="t-koma">56</td><td class="t-fee">140,000円</td></tr>
+        <tr><td class="t-teacher">金</td><td class="t-subj"><span class="badge badge-korean">韓国語</span></td><td class="t-koma">55</td><td class="t-fee">137,500円</td></tr>
+        <tr><td class="t-teacher">津田</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">54</td><td class="t-fee">135,000円</td></tr>
+        <tr class="undecided"><td class="t-teacher">（未定）</td><td class="t-subj"><span class="badge badge-other">製本／美術</span></td><td class="t-koma">54</td><td class="t-fee">135,000円</td></tr>
+        <tr><td class="t-teacher">浅井</td><td class="t-subj"><span class="badge badge-other">PC</span></td><td class="t-koma">30</td><td class="t-fee">75,000円</td></tr>
+        <tr><td class="t-teacher">ディヴィーナ</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">30</td><td class="t-fee">75,000円</td></tr>
+        <tr><td class="t-teacher">八百</td><td class="t-subj"><span class="badge badge-music">伴奏</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+        <tr><td class="t-teacher">小林洋</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">27</td><td class="t-fee">67,500円</td></tr>
+        <tr><td class="t-teacher">加藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">12</td><td class="t-fee">30,000円</td></tr>
+        <tr><td class="t-teacher">後藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">12</td><td class="t-fee">30,000円</td></tr>
+      </table>
+    </div>
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label koto">10・11年</span><span class="grade-koma">405コマ</span><span class="grade-fee">1,012,500円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">佐藤み</td><td class="t-subj"><span class="badge badge-other">国語</span></td><td class="t-koma">62</td><td class="t-fee">155,000円</td></tr>
+        <tr><td class="t-teacher">金</td><td class="t-subj"><span class="badge badge-korean">韓国語</span></td><td class="t-koma">57</td><td class="t-fee">142,500円</td></tr>
+        <tr><td class="t-teacher">津田</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">59</td><td class="t-fee">147,500円</td></tr>
+        <tr class="undecided"><td class="t-teacher">（未定）</td><td class="t-subj"><span class="badge badge-other">製本／美術</span></td><td class="t-koma">59</td><td class="t-fee">147,500円</td></tr>
+        <tr><td class="t-teacher">浅井</td><td class="t-subj"><span class="badge badge-other">PC</span></td><td class="t-koma">31</td><td class="t-fee">77,500円</td></tr>
+        <tr><td class="t-teacher">ディヴィーナ</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">31</td><td class="t-fee">77,500円</td></tr>
+        <tr><td class="t-teacher">小林洋</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+        <tr><td class="t-teacher">八百</td><td class="t-subj"><span class="badge badge-music">伴奏</span></td><td class="t-koma">28</td><td class="t-fee">70,000円</td></tr>
+        <tr><td class="t-teacher">加藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">25</td><td class="t-fee">62,500円</td></tr>
+        <tr><td class="t-teacher">後藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">25</td><td class="t-fee">62,500円</td></tr>
+      </table>
+    </div>
+
+    <div class="grade-card">
+      <div class="grade-card-header"><span class="grade-label koto">12年</span><span class="grade-koma">308コマ</span><span class="grade-fee">770,000円</span></div>
+      <table class="inner">
+        <tr><td class="t-teacher">金</td><td class="t-subj"><span class="badge badge-korean">韓国語</span></td><td class="t-koma">55</td><td class="t-fee">137,500円</td></tr>
+        <tr><td class="t-teacher">八百</td><td class="t-subj"><span class="badge badge-music">伴奏</span></td><td class="t-koma">54</td><td class="t-fee">135,000円</td></tr>
+        <tr><td class="t-teacher">津田</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">50</td><td class="t-fee">125,000円</td></tr>
+        <tr><td class="t-teacher">幸</td><td class="t-subj"><span class="badge badge-other">数学</span></td><td class="t-koma">50</td><td class="t-fee">125,000円</td></tr>
+        <tr class="undecided"><td class="t-teacher">（未定）</td><td class="t-subj"><span class="badge badge-other">製本／美術</span></td><td class="t-koma">50</td><td class="t-fee">125,000円</td></tr>
+        <tr><td class="t-teacher">小林洋</td><td class="t-subj"><span class="badge badge-english">英語</span></td><td class="t-koma">25</td><td class="t-fee">62,500円</td></tr>
+        <tr><td class="t-teacher">加藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">12</td><td class="t-fee">30,000円</td></tr>
+        <tr><td class="t-teacher">後藤</td><td class="t-subj"><span class="badge badge-sport">体育</span></td><td class="t-koma">12</td><td class="t-fee">30,000円</td></tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<div class="note">
+※ 1コマ 2,500円（一律）。<br>
+※ 10・11年は合同クラスとして合算計上。<br>
+※ 体育（加藤・後藤）のシート上「8〜12年合同」行は5学年で均等按分（端数四捨五入）。<br>
+※「製本／美術」は担当者未定のため予算枠として計上（9年・10・11年・12年に分散、計163コマ）。
+</div>
+
+</body>
+</html>
