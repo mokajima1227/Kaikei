@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>高等部 人件費内訳別削減シミュレーター</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:14px;background:#F8F7F4;color:#1a1a18;padding:1.5rem 1rem;max-width:720px;margin:0 auto}
+h1{font-size:18px;font-weight:500;margin-bottom:4px}
+.subtitle{font-size:12px;color:#888780;margin-bottom:1.5rem}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:1.25rem}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:1.25rem}
+.card{background:#fff;border:0.5px solid #D3D1C7;border-radius:12px;padding:.9rem 1.1rem}
+.sec{font-size:11px;font-weight:500;color:#888780;letter-spacing:.04em;margin:1.25rem 0 .6rem;text-transform:none}
+.lbl{font-size:11px;color:#888780;margin-bottom:2px}
+.big{font-size:20px;font-weight:500;color:#1a1a18;margin-bottom:8px}
+.big span{font-size:12px;font-weight:400;color:#5F5E5A}
+.scard{background:#F1EFE8;border:0.5px solid #D3D1C7;border-radius:8px;padding:.65rem .9rem}
+.scard .sl{font-size:10px;color:#888780;margin-bottom:2px}
+.scard .sv{font-size:16px;font-weight:500;color:#1a1a18}
+.plus{color:#0F6E56}.minus{color:#993C1D}.warn{color:#854F0B}
+input[type=range]{width:100%;accent-color:#534AB7;cursor:pointer}
+.tick{display:flex;justify-content:space-between;font-size:10px;color:#888780;margin-top:3px}
+.cost-block{border:0.5px solid #D3D1C7;border-radius:12px;overflow:hidden;margin-bottom:.75rem;background:#fff}
+.cb-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:0.5px solid #D3D1C7;background:#F8F7F4}
+.cb-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.cb-title{font-size:13px;font-weight:500;color:#1a1a18;flex:1}
+.cb-fixed{font-size:11px;color:#5F5E5A;background:#E8E6DC;border:0.5px solid #D3D1C7;border-radius:4px;padding:2px 8px}
+.cb-body{padding:10px 14px 14px}
+.cb-nums{display:flex;gap:20px;margin-bottom:10px;flex-wrap:wrap}
+.cb-num{font-size:11px;color:#888780}
+.cb-num strong{font-size:14px;font-weight:500;color:#1a1a18;display:block}
+.cb-num .delta{color:#993C1D}
+.cb-num .after-val{color:#0F6E56}
+.range-wrap{display:flex;align-items:center;gap:8px}
+.pct-badge{min-width:38px;font-size:12px;font-weight:500;text-align:right;color:#1a1a18}
+.hint{font-size:11px;line-height:1.8;border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem}
+.hint.ok{background:#E1F5EE;border:0.5px solid #0F6E56;color:#085041}
+.hint.ng{background:#FAECE7;border:0.5px solid #993C1D;color:#712B13}
+.hint.ng strong{color:#712B13}
+.hint.ok strong{color:#085041}
+.total-bar-wrap{height:8px;background:#D3D1C7;border-radius:4px;margin:.4rem 0 .8rem;overflow:hidden}
+.total-bar-fill{height:100%;border-radius:4px;transition:width .15s,background .15s}
+.balance-row{display:flex;justify-content:space-between;font-size:11px;color:#888780;margin-bottom:4px}
+.note{font-size:10px;color:#888780;line-height:1.8;margin-top:1rem;padding-top:.8rem;border-top:0.5px solid #D3D1C7}
+</style>
+</head>
+<body>
+
+<h1>高等部 人件費内訳別削減シミュレーター</h1>
+<div class="subtitle">2026年度 / 常勤給料は固定・教務・専科・外部講師を個別に削減</div>
+
+<div class="sec">収入の前提</div>
+<div class="grid2">
+  <div class="card">
+    <div class="lbl">月額参加費</div>
+    <div class="big" id="fee-disp">55,000円<span>/月</span></div>
+    <input type="range" id="fee" min="55000" max="65000" step="1000" value="55000">
+    <div class="tick"><span>5.5万（現状）</span><span>6.5万（上限）</span></div>
+  </div>
+  <div class="card">
+    <div class="lbl">高等部 生徒数</div>
+    <div class="big" id="stu-disp">12名</div>
+    <input type="range" id="stu" min="8" max="32" step="1" value="12">
+    <div class="tick"><span>8名</span><span>32名（満員）</span></div>
+  </div>
+</div>
+
+<div class="sec">費目別 削減シミュレーション</div>
+
+<div class="cost-block">
+  <div class="cb-head">
+    <div class="cb-dot" style="background:#EF9F27"></div>
+    <div class="cb-title">常勤給料（祥仁・畑中・今泉）</div>
+    <div class="cb-fixed">削減なし・固定</div>
+  </div>
+  <div class="cb-body">
+    <div class="cb-nums">
+      <div class="cb-num">現状<strong>7,560,000円</strong></div>
+      <div class="cb-num">削減額<strong class="delta">0円</strong></div>
+      <div class="cb-num">削減後<strong class="after-val">7,560,000円</strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="cost-block">
+  <div class="cb-head">
+    <div class="cb-dot" style="background:#F09595"></div>
+    <div class="cb-title">教務</div>
+  </div>
+  <div class="cb-body">
+    <div class="cb-nums">
+      <div class="cb-num">現状<strong>2,040,000円</strong></div>
+      <div class="cb-num">削減額<strong class="delta" id="kyo-delta">0円</strong></div>
+      <div class="cb-num">削減後<strong class="after-val" id="kyo-after">2,040,000円</strong></div>
+    </div>
+    <div class="range-wrap">
+      <input type="range" id="kyo" min="0" max="100" step="5" value="0" style="flex:1">
+      <span class="pct-badge" id="kyo-pct">0%</span>
+    </div>
+    <div class="tick"><span>削減なし</span><span>100%削減（廃止）</span></div>
+  </div>
+</div>
+
+<div class="cost-block">
+  <div class="cb-head">
+    <div class="cb-dot" style="background:#AFA9EC"></div>
+    <div class="cb-title">専科コマ給</div>
+  </div>
+  <div class="cb-body">
+    <div class="cb-nums">
+      <div class="cb-num">現状<strong>3,202,500円</strong></div>
+      <div class="cb-num">削減額<strong class="delta" id="senka-delta">0円</strong></div>
+      <div class="cb-num">削減後<strong class="after-val" id="senka-after">3,202,500円</strong></div>
+    </div>
+    <div class="range-wrap">
+      <input type="range" id="senka" min="0" max="100" step="5" value="0" style="flex:1">
+      <span class="pct-badge" id="senka-pct">0%</span>
+    </div>
+    <div class="tick"><span>削減なし</span><span>100%削減</span></div>
+  </div>
+</div>
+
+<div class="cost-block">
+  <div class="cb-head">
+    <div class="cb-dot" style="background:#5DCAA5"></div>
+    <div class="cb-title">外部講師費</div>
+  </div>
+  <div class="cb-body">
+    <div class="cb-nums">
+      <div class="cb-num">現状<strong>2,636,963円</strong></div>
+      <div class="cb-num">削減額<strong class="delta" id="ext-delta">0円</strong></div>
+      <div class="cb-num">削減後<strong class="after-val" id="ext-after">2,636,963円</strong></div>
+    </div>
+    <div class="range-wrap">
+      <input type="range" id="ext" min="0" max="100" step="5" value="0" style="flex:1">
+      <span class="pct-badge" id="ext-pct">0%</span>
+    </div>
+    <div class="tick"><span>削減なし</span><span>100%削減</span></div>
+  </div>
+</div>
+
+<div class="sec">削減後の収支</div>
+
+<div class="grid3">
+  <div class="scard">
+    <div class="sl">削減後 人件費合計</div>
+    <div class="sv" id="cost-v">—</div>
+  </div>
+  <div class="scard">
+    <div class="sl">削減額合計</div>
+    <div class="sv minus" id="cut-v">—</div>
+  </div>
+  <div class="scard">
+    <div class="sl">年間参加費収入</div>
+    <div class="sv" id="income-v">—</div>
+  </div>
+</div>
+
+<div style="margin:.8rem 0 .3rem">
+  <div class="balance-row">
+    <span>収支（収入 − 人件費）</span>
+    <span id="balance-label">—</span>
+  </div>
+  <div class="total-bar-wrap">
+    <div class="total-bar-fill" id="total-bar"></div>
+  </div>
+</div>
+
+<div class="hint ng" id="hint">—</div>
+
+<div class="note">
+  ※ 常勤給料（7,560,000円）は削減対象外として固定しています。<br>
+  ※ 各費目の削減率は現状金額に対するパーセンテージです。実際の削減方法（コマ数削減・単価見直し・人員変更等）は別途検討が必要です。<br>
+  ※ 人件費以外の運営費・施設費等は含みません。
+</div>
+
+<script>
+const BASE = {jokin:7560000, kyo:2040000, senka:3202500, ext:2636963};
+const TOTAL_BASE = Object.values(BASE).reduce((a,b)=>a+b,0);
+
+function fmt(n){return Math.round(Math.abs(n)).toLocaleString('ja-JP')+'円';}
+
+function update(){
+  const fee  = parseInt(document.getElementById('fee').value);
+  const stu  = parseInt(document.getElementById('stu').value);
+  const kyoPct   = parseInt(document.getElementById('kyo').value)/100;
+  const senkaPct = parseInt(document.getElementById('senka').value)/100;
+  const extPct   = parseInt(document.getElementById('ext').value)/100;
+
+  document.getElementById('fee-disp').innerHTML = fmt(fee)+'<span>/月</span>';
+  document.getElementById('stu-disp').innerHTML = stu+'名<span>（'+(stu===12?'現状':stu>12?'増加':'減少')+'）</span>';
+
+  const cuts   = {kyo: BASE.kyo*kyoPct,   senka: BASE.senka*senkaPct,   ext: BASE.ext*extPct};
+  const afters = {kyo: BASE.kyo-cuts.kyo, senka: BASE.senka-cuts.senka, ext: BASE.ext-cuts.ext};
+
+  ['kyo','senka','ext'].forEach(function(k){
+    var pct = parseInt(document.getElementById(k).value);
+    document.getElementById(k+'-pct').textContent   = pct+'%';
+    document.getElementById(k+'-delta').textContent = fmt(cuts[k]);
+    document.getElementById(k+'-after').textContent = fmt(afters[k]);
+  });
+
+  const totalCut  = cuts.kyo + cuts.senka + cuts.ext;
+  const totalCost = TOTAL_BASE - totalCut;
+  const income    = fee * 12 * stu;
+  const balance   = income - totalCost;
+
+  document.getElementById('cost-v').textContent   = fmt(totalCost);
+  document.getElementById('cut-v').textContent    = '▼'+fmt(totalCut);
+  document.getElementById('income-v').textContent = fmt(income);
+
+  const barW = Math.min(Math.max(income/totalCost,0)/1.5*100, 100);
+  const bar  = document.getElementById('total-bar');
+  bar.style.width      = barW+'%';
+  bar.style.background = balance >= 0 ? '#1D9E75' : '#D85A30';
+
+  document.getElementById('balance-label').innerHTML =
+    '<strong style="color:'+(balance>=0?'#0F6E56':'#993C1D')+'">'+(balance>=0?'+':'-')+fmt(balance)+'</strong>';
+
+  const hint = document.getElementById('hint');
+  if(balance >= 0){
+    hint.className = 'hint ok';
+    hint.innerHTML = '<strong>収支プラス　+'+fmt(balance)+'</strong><br>'+
+      '人件費削減 ▼'+fmt(totalCut)+'（削減率 '+Math.round(totalCut/TOTAL_BASE*100)+'%）で収支均衡を達成。'+
+      '　1人当たりコスト '+fmt(totalCost/stu)+'。';
+  } else {
+    const still    = -balance;
+    const needFee  = Math.ceil(still/(stu*12)/1000)*1000;
+    const needStu  = Math.ceil(totalCost/(fee*12));
+    hint.className = 'hint ng';
+    hint.innerHTML = '<strong>収支マイナス　−'+fmt(still)+'</strong>　あと '+fmt(still)+' 足りません。<br>'+
+      '・参加費をさらに <strong>+'+fmt(needFee)+'/月</strong> 上げる（→ '+fmt(fee+needFee)+'/月）<br>'+
+      '・または生徒を <strong>'+needStu+'名</strong> 以上にする<br>'+
+      '・または上記削減に加えてさらに <strong>▼'+fmt(still)+'</strong> 削減する';
+  }
+}
+
+['fee','stu','kyo','senka','ext'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', update);
+});
+update();
+</script>
+</body>
+</html>
